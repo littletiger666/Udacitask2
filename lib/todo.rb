@@ -14,10 +14,18 @@ class TodoItem
 
 
   def format_priority
-    value = " ⇧" if @priority == "high"
-    value = " ⇨" if @priority == "medium"
-    value = " ⇩" if @priority == "low"
-    value = "" if !@priority
+    if @priority == "high"
+      value = " ⇧"
+    elsif @priority == "medium"
+      value = " ⇨"
+    elsif @priority == "low"
+      value = " ⇩"
+    elsif !@priority
+      value = ""
+    else
+      raise InvalidPriorityValueError
+    end
+      
     return value
   end
 

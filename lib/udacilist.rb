@@ -15,19 +15,22 @@ class UdaciList
     elsif type == "link"
       @items.push LinkItem.new(description, options)
     else
-      raise InvalidItemTypeError
+      raise UdaciListErrors::InvalidItemTypeError, "#{type} is an invalid type"
     end
   end
   def delete(index)
     @items.delete_at(index - 1) if index <= @items.length
-    raise IndexExceedsListSizeError if index > @items.length
+    raise UdaciListErrors::IndexExceedsListSizeError, "There are only #{@items.length} items" if index > @items.length
   end
   def all
     puts "-" * @title.length
     puts @title
     puts "-" * @title.length
+    rows = []
     @items.each_with_index do |item, position|
-      puts "#{position + 1}) #{item.details}"
+      rows << [position+1, item.details]
     end
+    table = Terminal::Table.new :rows => rows
+    puts table
   end
 end

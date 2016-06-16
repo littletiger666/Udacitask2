@@ -15,17 +15,17 @@ class TodoItem
 
   def format_priority
     if @priority == "high"
-      value = " ⇧"
+      value = " ⇧".colorize(:red)
     elsif @priority == "medium"
-      value = " ⇨"
+      value = " ⇨".colorize(:yellow)
     elsif @priority == "low"
-      value = " ⇩"
+      value = " ⇩".colorize(:green)
     elsif !@priority
       value = ""
     else
-      raise InvalidPriorityValueError
+      raise UdaciListErrors::InvalidPriorityValueError, "not a valid priority"
     end
-      
+
     return value
   end
 

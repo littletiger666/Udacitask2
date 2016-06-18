@@ -33,4 +33,18 @@ class UdaciList
     table = Terminal::Table.new :rows => rows
     puts table
   end
+  def filter string
+    match_items = @items.select {|item| item.type == string}
+    if match_items == nil
+      puts "no matched item"
+    else
+      rows = []
+      match_items.each_with_index do |item, position|
+        rows << [position+1, item.details]
+      end
+      table = Terminal::Table.new :rows => rows
+      puts "matched items:\n"
+      puts table
+    end
+  end
 end

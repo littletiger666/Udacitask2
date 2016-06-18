@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    chronic (0.10.2)
+    colorize (0.7.7)
+    terminal-table (1.6.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  chronic (= 0.10.2)
+  colorize (= 0.7.7)
+  terminal-table (= 1.6.0)
+
+BUNDLED WITH
+   1.12.5

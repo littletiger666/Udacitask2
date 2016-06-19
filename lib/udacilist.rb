@@ -56,11 +56,11 @@ class UdaciList
     match_items = []
     @items.each do |item|
       if item.type == "todo"
-        if item.due && item.due - Chronic.parse(Date.today) <= 100000
+        if item.due && item.due - Chronic.parse(Date.today) <= 86400
           match_items << item
         end
       elsif item.type == "event"
-        if item.start_date && (item.start_date - Chronic.parse(Date.today) <= 100000)
+        if item.start_date && item.start_date - Chronic.parse(Date.today) <= 86400
           match_items << item
         end
       end

@@ -1,13 +1,35 @@
 # What you added to Udacitask 2.0
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
+My third gem is 'terminal-table'.
+I use it to create a more structured table for todo list.
+
 2. Describe the 2 features you added to the project.
   a) Feature 1...
+  First feature is 'due_soon', it's like method 'filter'. Instead of select the correct type, it
+  select tasks that due in one day.
   b) Feature 2...
+  Second one is 'complete', after user completing one task, it will remove this task from the todo
+  list. I think this is more useful than delete(index) method because users don's want to remember
+  the index to delete task.
 
 # REFLECTIONS
 # -------------------------------------------------------
 1. How long did you spend working on this project?
+I spend about 10 hours.
+
 2. What was the most rewarding challenge you conquered?
+Changing other's code is harder than I thought. Things I learn from this is: if you want to work on
+other's code, don't start to read his/her code immediately, it's hard to get the logic behind other's
+project. What you can do is start from the Terminal input, try to understand every features, then move
+to code.
+
 3. What two additional features did you build? Why?
+I want to add some features that can give users more information. This is why my first feature 'due soon'
+comes in. It can let users focus on most urgent tasks.
+The reason I add 'complete' feature is that I think this is a required feature in all todo apps. Without
+it, the todo list will be there forever.
+
 4. Where do you still have room to grow?
+There are some Hash arguments in the code that troubles me a lot. I think I need more practice on Hash
+in general. 

@@ -18,6 +18,11 @@ class UdaciList
       raise UdaciListErrors::InvalidItemTypeError, "#{type} is an invalid type"
     end
   end
+  def complete(description)
+    task = @items.find {|item| item.description == description}
+    @items.delete task
+  end
+
   def delete(index)
     @items.delete_at(index - 1) if index <= @items.length
     raise UdaciListErrors::IndexExceedsListSizeError, "There are only #{@items.length} items" if index > @items.length
@@ -36,14 +41,39 @@ class UdaciList
   def filter string
     match_items = @items.select {|item| item.type == string}
     if match_items == nil
-      puts "no matched item"
+      puts "no matched task"
     else
       rows = []
       match_items.each_with_index do |item, position|
         rows << [position+1, item.details]
       end
       table = Terminal::Table.new :rows => rows
-      puts "matched items:\n"
+      puts "matched taskes:\n"
+      puts table
+    end
+  end
+  def due_soon
+    match_items = []
+    @items.each do |item|
+      if item.type == "todo"
+        if item.due && item.due - Chronic.parse(Date.today) <= 100000
+          match_items << item
+        end
+      elsif item.type == "event"
+        if item.start_date && (item.start_date - Chronic.parse(Date.today) <= 100000)
+          match_items << item
+        end
+      end
+    end
+    if match_items == []
+      puts "There is no task due soon"
+    else
+      rows = []
+      match_items.each_with_index do |item, position|
+        rows << [position+1, item.details]
+      end
+      table = Terminal::Table.new :rows => rows
+      puts "taskes that due soon:\n"
       puts table
     end
   end

@@ -46,3 +46,9 @@ new_list.all
 # DEMO FILTER BY ITEM TYPE
 # ------------------------
 new_list.filter("event")
+
+new_list.due_soon
+
+new_list.complete "Go dancing"
+
+new_list.all
